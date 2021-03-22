@@ -1,0 +1,35 @@
+.make-icon-inside{
+    position: absolute;
+    /* padding-top: 11px;
+    padding-bottom: 11px;
+    margin-left: 12px;
+    margin-right: 12px; */
+    z-index: 1;
+}
+
+.input-group{
+    /* width: 280px;
+    padding-left: 32px; */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    /* display: block; */
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;    
+}
+
+.form-group{
+    width: 450px;
+}

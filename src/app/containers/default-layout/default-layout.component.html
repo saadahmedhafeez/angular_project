@@ -1,0 +1,67 @@
+<style>
+  .app-header .navbar-toggler {
+    display: none !important;
+}
+</style>
+<app-header
+  [fixed]="true"
+  [navbarBrandFull]="{src: navbarBrandFull_url , width: 40, height: 40, alt: 'company Logo'}"
+  [navbarBrandMinimized]="{src: navbarBrandMinimized_url, width: 30, height: 30, alt: 'IKS Logics Logo'}"
+  [sidebarToggler]="'lg'">
+  
+  <ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3">
+      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item px-3">
+      <a class="nav-link" routerLink="/user">Users</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" routerLink="/dashboard" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <img [src]="img_url" class="img-avatar" alt="img"/>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item" routerLink="/dashboard"><i class="fa fa-wrench"></i> Change Password</a>
+        <li class="dropdown-item" (click)="logOut()"><i class="fa fa-lock"></i> Logout</li>
+      </div>
+    </li>
+    <!-- <li style="position: absolute; float: left; margin-left: 5em; background-color: white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar 
+  #appSidebar 
+  [fixed]="true" 
+  [display]="'lg'" 
+  [minimized]="sidebarMinimized" 
+  (minimizedChange)="toggleMinimize($event)">
+    <app-sidebar-nav
+    [navItems]="navItems" 
+    [perfectScrollbar] 
+    [disabled]="appSidebar.minimized"
+    >
+  </app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  <main class="main">
+    <cui-breadcrumb>
+      <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-speech"></i></a>
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+          <a class="btn" [routerLink]="['/user']"><i class="icon-settings"></i> &nbsp;Settings</a>
+        </div>
+      </li>
+    </cui-breadcrumb>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+<app-footer>
+  <span><a href="https://ikslogics.com">IKS Logics</a> &copy; 2021 creativeLabs.</span>
+  <span class="ml-auto">Powered by <a href="https://www.linkedin.com/company/ikslogics/mycompany/">IKS Logics LinkedIn</a></span>
+</app-footer>

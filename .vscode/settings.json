@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "One Monokai",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.autofetch": true,
+    "angular.experimental-ivy": true,
+    "task.saveBeforeRun": "never"
+}

@@ -1,0 +1,94 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <a routerLink="addUser" class="btn btn-success float-right">
+              <i class="fa fa-user-plus"></i> Add User</a>
+        </div>
+        <div class="card-body center">
+          <h3>10 Users</h3>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success">
+              <i class="fa fa-wrench"></i> Edit</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="card">
+        <div class="card-header">
+            <div >&nbsp;</div>
+        </div>
+        <div class="card-body center">
+          <img [src]="img_url" class="img-responsive" alt="img"/>
+        </div>
+        <div class="card-footer center"><a routerLink="editUser" class="btn btn-success">
+          <i class="fa fa-wrench"></i> Edit</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Users Table
+        </div>
+        <div class="card-body">
+          <div class="form-inline my-2 my-lg-2 float-right">
+            <span class="btn"><i class="fa fa-search"></i></span>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by First Name ..." 
+            aria-label="Search" name="firstName" [(ngModel)] = "firstName" (ngModelChange)="Search()">
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-search"></i> Search</button> -->
+          </div>
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th (click)="sort('First Name')">First Name 
+                  <span class="float-right mr-1 pt-1"><i class="fa fa-sort" style="position: relative;"></i></span>
+                </th>
+                <th (click)="sort('Last Name')">Last Name 
+                  <span class="float-right mr-1 pt-1"><i class="fa fa-sort" style="position: relative;"></i></span>
+                </th>
+                <th>User Name</th>
+                <th>User Type</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users | orderBy: key : !reverse | paginate: { itemsPerPage: 5, currentPage: p }">
+                <td>{{user['First Name']}}</td>
+                <td>{{user['Last Name']}}</td>
+                <td>{{user['User Name']}}</td>
+                <td>{{user['User Type']}}</td>
+                <td>
+                  <button class="btn btn-sm btn-success center">
+                    <i class="fa fa-wrench"></i> Edit</button>
+                </td>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>
+
+  
